@@ -1,0 +1,287 @@
+{
+  "timestamp_utc": "2026-11-03T17:43:17.731092+00:00",
+  "target": {
+    "source": "torchscript",
+    "path": "<local-path-redacted>",
+    "input_shape": [
+      1,
+      28,
+      28
+    ],
+    "num_classes": 10,
+    "clip_values": [
+      -0.424212917883804,
+      2.82148653034729
+    ],
+    "device": "cpu",
+    "kind": "image"
+  },
+  "data": {
+    "source": "npz",
+    "path": "<local-path-redacted>",
+    "max_samples": 500
+  },
+  "run": {
+    "batch_size": 64,
+    "seed": 0,
+    "generations": 3,
+    "max_prompts_per_probe": 64,
+    "parallel_requests": 1,
+    "timeout_minutes": 60,
+    "attack_timeout_seconds": 600
+  },
+  "default_attack_suite": true,
+  "skipped_attacks": [],
+  "environment": {
+    "python": "3.14.9",
+    "art": "1.20.1",
+    "numpy": "2.5.4",
+    "torch": "2.15.0+cu132"
+  },
+  "results": [
+    {
+      "attack": "FGSM",
+      "art_class": "FastGradientMethod",
+      "category": "white-box",
+      "params": {
+        "eps": 0.1623
+      },
+      "n_samples": 500,
+      "clean_accuracy": 0.986,
+      "adversarial_accuracy": 0.978,
+      "attack_success_rate": 0.008113590263691683,
+      "mean_l2": 3.4602633056640624,
+      "mean_linf": 0.16230010986328125,
+      "seconds": 0.19,
+      "error": null,
+      "examples_file": "examples_01_fgsm.npz"
+    },
+    {
+      "attack": "FGSM",
+      "art_class": "FastGradientMethod",
+      "category": "white-box",
+      "params": {
+        "eps": 0.3246
+      },
+      "n_samples": 500,
+      "clean_accuracy": 0.986,
+      "adversarial_accuracy": 0.958,
+      "attack_success_rate": 0.028397565922920892,
+      "mean_l2": 6.8923037109375,
+      "mean_linf": 0.32460009765625,
+      "seconds": 0.14,
+      "error": null,
+      "examples_file": "examples_02_fgsm.npz"
+    },
+    {
+      "attack": "FGSM",
+      "art_class": "FastGradientMethod",
+      "category": "white-box",
+      "params": {
+        "eps": 0.6491
+      },
+      "n_samples": 500,
+      "clean_accuracy": 0.986,
+      "adversarial_accuracy": 0.908,
+      "attack_success_rate": 0.07910750507099391,
+      "mean_l2": 13.69132666015625,
+      "mean_linf": 0.6491001892089844,
+      "seconds": 0.12,
+      "error": null,
+      "examples_file": "examples_03_fgsm.npz"
+    },
+    {
+      "attack": "FGSM",
+      "art_class": "FastGradientMethod",
+      "category": "white-box",
+      "params": {
+        "eps": 0.9737
+      },
+      "n_samples": 500,
+      "clean_accuracy": 0.986,
+      "adversarial_accuracy": 0.824,
+      "attack_success_rate": 0.1663286004056795,
+      "mean_l2": 20.417208984375,
+      "mean_linf": 0.9736998291015625,
+      "seconds": 0.1,
+      "error": null,
+      "examples_file": "examples_04_fgsm.npz"
+    },
+    {
+      "attack": "PGD",
+      "art_class": "ProjectedGradientDescent",
+      "category": "white-box",
+      "params": {
+        "eps": 0.3246,
+        "eps_step": 0.03246,
+        "max_iter": 40
+      },
+      "n_samples": 500,
+      "clean_accuracy": 0.986,
+      "adversarial_accuracy": 0.784,
+      "attack_success_rate": 0.20486815415821502,
+      "mean_l2": 5.91512255859375,
+      "mean_linf": 0.32460009765625,
+      "seconds": 2.96,
+      "error": null,
+      "examples_file": "examples_05_pgd.npz"
+    },
+    {
+      "attack": "PGD",
+      "art_class": "ProjectedGradientDescent",
+      "category": "white-box",
+      "params": {
+        "eps": 0.9737,
+        "eps_step": 0.09737,
+        "max_iter": 40
+      },
+      "n_samples": 500,
+      "clean_accuracy": 0.986,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 17.314033203125,
+      "mean_linf": 0.9736998291015625,
+      "seconds": 3.28,
+      "error": null,
+      "examples_file": "examples_06_pgd.npz"
+    },
+    {
+      "attack": "DEEPFOOL",
+      "art_class": "DeepFool",
+      "category": "white-box",
+      "params": {
+        "max_iter": 50
+      },
+      "n_samples": 200,
+      "clean_accuracy": 0.98,
+      "adversarial_accuracy": 0.02,
+      "attack_success_rate": 1.0,
+      "mean_l2": 13.850050048828125,
+      "mean_linf": 2.769939270019531,
+      "seconds": 0.97,
+      "error": null,
+      "examples_file": "examples_07_deepfool.npz"
+    },
+    {
+      "attack": "JSMA",
+      "art_class": "SaliencyMapMethod",
+      "category": "white-box",
+      "params": {
+        "theta": 3.246,
+        "gamma": 0.1
+      },
+      "n_samples": 100,
+      "clean_accuracy": 0.97,
+      "adversarial_accuracy": 0.25,
+      "attack_success_rate": 0.7525773195876289,
+      "mean_l2": 18.398985595703124,
+      "mean_linf": 3.245699462890625,
+      "seconds": 1.97,
+      "error": null,
+      "examples_file": "examples_08_jsma.npz"
+    },
+    {
+      "attack": "CW",
+      "art_class": "CarliniL2Method",
+      "category": "white-box",
+      "params": {
+        "max_iter": 30,
+        "binary_search_steps": 5,
+        "learning_rate": 0.1623,
+        "initial_const": 1.0
+      },
+      "n_samples": 50,
+      "clean_accuracy": 0.98,
+      "adversarial_accuracy": 0.66,
+      "attack_success_rate": 0.32653061224489793,
+      "mean_l2": 2.0130262756347657,
+      "mean_linf": 0.7704285430908203,
+      "seconds": 11.99,
+      "error": null,
+      "examples_file": "examples_09_cw.npz"
+    },
+    {
+      "attack": "EAD",
+      "art_class": "ElasticNet",
+      "category": "white-box",
+      "params": {
+        "max_iter": 30,
+        "binary_search_steps": 5,
+        "learning_rate": 0.1623,
+        "initial_const": 1.0
+      },
+      "n_samples": 50,
+      "clean_accuracy": 0.98,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 16.418870849609377,
+      "mean_linf": 2.5403291320800783,
+      "seconds": 9.22,
+      "error": null,
+      "examples_file": "examples_10_ead.npz"
+    },
+    {
+      "attack": "SQUARE",
+      "art_class": "SquareAttack",
+      "category": "black-box",
+      "params": {
+        "eps": 0.9737,
+        "max_iter": 200,
+        "nb_restarts": 1
+      },
+      "n_samples": 100,
+      "clean_accuracy": 0.97,
+      "adversarial_accuracy": 0.05,
+      "attack_success_rate": 0.9484536082474226,
+      "mean_l2": 19.1897705078125,
+      "mean_linf": 0.9444889831542969,
+      "seconds": 1.85,
+      "error": null,
+      "examples_file": "examples_11_square.npz"
+    },
+    {
+      "attack": "HSJA",
+      "art_class": "HopSkipJump",
+      "category": "black-box",
+      "params": {
+        "max_iter": 10,
+        "max_eval": 500,
+        "init_eval": 50,
+        "init_size": 100
+      },
+      "n_samples": 30,
+      "clean_accuracy": 1.0,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 10.118384806315104,
+      "mean_linf": 1.868011474609375,
+      "seconds": 9.78,
+      "error": null,
+      "examples_file": "examples_12_hsja.npz"
+    },
+    {
+      "attack": "AUTOATTACK",
+      "art_class": "AutoAttack",
+      "category": "mixed",
+      "params": {
+        "eps": 0.9737,
+        "eps_step": 0.09737
+      },
+      "n_samples": 100,
+      "clean_accuracy": 0.97,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 17.562088623046876,
+      "mean_linf": 0.9444889831542969,
+      "seconds": 1.78,
+      "error": null,
+      "examples_file": "examples_13_autoattack.npz"
+    }
+  ],
+  "limits": [
+    "Results apply only to the attacks, parameters and samples listed above.",
+    "A low attack success rate does not prove robustness: stronger attacks, different parameters or black-box methods may still succeed.",
+    "These are white-box attacks: they use the model's gradients, which an outside attacker may not have.",
+    "Attack success rate counts only samples the model classified correctly before the attack."
+  ]
+}

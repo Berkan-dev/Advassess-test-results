@@ -1,0 +1,538 @@
+{
+  "timestamp_utc": "2026-11-06T18:49:05.616252+00:00",
+  "target": {
+    "source": "torchscript",
+    "path": "<local-path-redacted>",
+    "input_shape": [
+      3,
+      224,
+      224
+    ],
+    "num_classes": 1000,
+    "clip_values": [
+      0.0,
+      1.0
+    ],
+    "device": "cpu",
+    "kind": "image"
+  },
+  "data": {
+    "source": "npz",
+    "path": "<local-path-redacted>",
+    "max_samples": 128
+  },
+  "run": {
+    "batch_size": 16,
+    "seed": 42,
+    "generations": 5,
+    "max_prompts_per_probe": 10000,
+    "parallel_requests": 1,
+    "timeout_minutes": 720,
+    "attack_timeout_seconds": 240
+  },
+  "default_attack_suite": false,
+  "skipped_attacks": [],
+  "environment": {
+    "python": "3.14.9",
+    "art": "1.20.1",
+    "numpy": "2.5.4",
+    "torch": "2.15.0+cu132"
+  },
+  "results": [
+    {
+      "attack": "FGSM",
+      "art_class": "FastGradientMethod",
+      "category": "white-box",
+      "params": {
+        "eps": 0.1
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.0625,
+      "attack_success_rate": 0.9333333333333333,
+      "mean_l2": 37.43995666503906,
+      "mean_linf": 0.10000002384185791,
+      "seconds": 20.6,
+      "error": null,
+      "examples_file": "examples_01_fgsm.npz"
+    },
+    {
+      "attack": "BIM",
+      "art_class": "BasicIterativeMethod",
+      "category": "white-box",
+      "params": {
+        "eps": 0.1,
+        "eps_step": 0.025,
+        "max_iter": 3
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 16.398162841796875,
+      "mean_linf": 0.07500001788139343,
+      "seconds": 44.6,
+      "error": null,
+      "examples_file": "examples_02_bim.npz"
+    },
+    {
+      "attack": "PGD",
+      "art_class": "ProjectedGradientDescent",
+      "category": "white-box",
+      "params": {
+        "eps": 0.1,
+        "eps_step": 0.025,
+        "max_iter": 3
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 16.398162841796875,
+      "mean_linf": 0.07500001788139343,
+      "seconds": 43.99,
+      "error": null,
+      "examples_file": "examples_03_pgd.npz"
+    },
+    {
+      "attack": "MIM",
+      "art_class": "MomentumIterativeMethod",
+      "category": "white-box",
+      "params": {
+        "eps": 0.1,
+        "eps_step": 0.025,
+        "max_iter": 3
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 23.03791046142578,
+      "mean_linf": 0.07500001788139343,
+      "seconds": 44.27,
+      "error": null,
+      "examples_file": "examples_04_mim.npz"
+    },
+    {
+      "attack": "APGD",
+      "art_class": "AutoProjectedGradientDescent",
+      "category": "white-box",
+      "params": {
+        "eps": 0.1,
+        "eps_step": 0.025,
+        "max_iter": 3,
+        "nb_random_init": 1,
+        "loss_type": "cross_entropy"
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 21.730758666992188,
+      "mean_linf": 0.09375002235174179,
+      "seconds": 58.47,
+      "error": null,
+      "examples_file": "examples_05_apgd.npz"
+    },
+    {
+      "attack": "ACG",
+      "art_class": "AutoConjugateGradient",
+      "category": "white-box",
+      "params": {
+        "eps": 0.1,
+        "eps_step": 0.025,
+        "max_iter": 3,
+        "nb_random_init": 1,
+        "loss_type": "cross_entropy"
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.875,
+      "attack_success_rate": 0.06666666666666667,
+      "mean_l2": 20.403335571289062,
+      "mean_linf": 0.0937495306134224,
+      "seconds": 57.68,
+      "error": null,
+      "examples_file": "examples_06_acg.npz"
+    },
+    {
+      "attack": "RACG",
+      "art_class": "RescalingAutoConjugateGradient",
+      "category": "white-box",
+      "params": {
+        "eps": 0.1,
+        "eps_step": 0.025,
+        "max_iter": 3,
+        "nb_random_init": 1,
+        "loss_type": "cross_entropy"
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.875,
+      "attack_success_rate": 0.06666666666666667,
+      "mean_l2": 20.402727127075195,
+      "mean_linf": 0.09374962002038956,
+      "seconds": 57.68,
+      "error": null,
+      "examples_file": "examples_07_racg.npz"
+    },
+    {
+      "attack": "VAT",
+      "params": {
+        "max_iter": 2,
+        "eps": 0.05
+      },
+      "error": "TimeoutError: took longer than 240 s (raise run.attack_timeout_seconds to allow more)"
+    },
+    {
+      "attack": "SHADOW",
+      "art_class": "ShadowAttack",
+      "category": "white-box",
+      "params": {
+        "nb_steps": 2,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 2,
+      "clean_accuracy": 0.5,
+      "adversarial_accuracy": 0.5,
+      "attack_success_rate": 0.0,
+      "mean_l2": 63.008888244628906,
+      "mean_linf": 0.4561276435852051,
+      "seconds": 3.66,
+      "error": null
+    },
+    {
+      "attack": "COMPOSITE",
+      "art_class": "CompositeAdversarialAttackPyTorch",
+      "category": "white-box",
+      "params": {
+        "max_iter": 1,
+        "max_inner_iter": 1,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 2,
+      "clean_accuracy": 0.5,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 88.9017333984375,
+      "mean_linf": 0.9941176176071167,
+      "seconds": 149.27,
+      "error": null,
+      "examples_file": "examples_10_composite.npz"
+    },
+    {
+      "attack": "CW_L2",
+      "art_class": "CarliniL2Method",
+      "category": "white-box",
+      "params": {
+        "max_iter": 2,
+        "binary_search_steps": 1,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 8,
+      "clean_accuracy": 0.875,
+      "adversarial_accuracy": 0.875,
+      "attack_success_rate": 0.0,
+      "mean_l2": 0.0,
+      "mean_linf": 0.0,
+      "seconds": 64.99,
+      "error": null,
+      "warning": "This attack changed no inputs at all, so the result says nothing about robustness. Its settings are probably too weak (try more iterations or a larger step or initial_const; see: python run.py --describe-attack cw_l2)."
+    },
+    {
+      "attack": "CW_LINF",
+      "params": {
+        "max_iter": 2,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "error": "TimeoutError: took longer than 240 s (raise run.attack_timeout_seconds to allow more)"
+    },
+    {
+      "attack": "CW_L0",
+      "params": {
+        "max_iter": 2,
+        "binary_search_steps": 1,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "error": "TimeoutError: took longer than 240 s (raise run.attack_timeout_seconds to allow more)"
+    },
+    {
+      "attack": "DEEPFOOL",
+      "art_class": "DeepFool",
+      "category": "white-box",
+      "params": {
+        "max_iter": 2,
+        "nb_grads": 5,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 4,
+      "clean_accuracy": 0.75,
+      "adversarial_accuracy": 0.75,
+      "attack_success_rate": 0.0,
+      "mean_l2": 0.04025019705295563,
+      "mean_linf": 0.002703901380300522,
+      "seconds": 188.02,
+      "error": null
+    },
+    {
+      "attack": "NEWTONFOOL",
+      "art_class": "NewtonFool",
+      "category": "white-box",
+      "params": {
+        "max_iter": 2,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 8,
+      "clean_accuracy": 0.875,
+      "adversarial_accuracy": 0.375,
+      "attack_success_rate": 0.7142857142857143,
+      "mean_l2": 1.8212021589279175,
+      "mean_linf": 0.07863807678222656,
+      "seconds": 26.47,
+      "error": null,
+      "examples_file": "examples_15_newtonfool.npz"
+    },
+    {
+      "attack": "EAD",
+      "art_class": "ElasticNet",
+      "category": "white-box",
+      "params": {
+        "max_iter": 2,
+        "binary_search_steps": 1,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 8,
+      "clean_accuracy": 0.875,
+      "adversarial_accuracy": 0.875,
+      "attack_success_rate": 0.0,
+      "mean_l2": 0.0,
+      "mean_linf": 0.0,
+      "seconds": 39.44,
+      "error": null,
+      "warning": "This attack changed no inputs at all, so the result says nothing about robustness. Its settings are probably too weak (try more iterations or a larger step or initial_const; see: python run.py --describe-attack ead)."
+    },
+    {
+      "attack": "JSMA",
+      "art_class": "SaliencyMapMethod",
+      "category": "white-box",
+      "params": {
+        "theta": 0.1,
+        "gamma": 1e-05,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 1,
+      "clean_accuracy": 1.0,
+      "adversarial_accuracy": 1.0,
+      "attack_success_rate": 0.0,
+      "mean_l2": 0.1414213478565216,
+      "mean_linf": 0.09999999403953552,
+      "seconds": 1.98,
+      "error": null
+    },
+    {
+      "attack": "WASSERSTEIN",
+      "params": {
+        "eps": 0.1,
+        "eps_step": 0.025,
+        "eps_iter": 1,
+        "max_iter": 1,
+        "conjugate_sinkhorn_max_iter": 3,
+        "projected_sinkhorn_max_iter": 3,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "error": "ValueError: Overflow error in `_conjugate_sinkhorn` for exponential beta."
+    },
+    {
+      "attack": "BOUNDARY",
+      "art_class": "BoundaryAttack",
+      "category": "black-box",
+      "params": {
+        "max_iter": 2,
+        "num_trial": 2,
+        "sample_size": 4,
+        "init_size": 8,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 4,
+      "clean_accuracy": 0.75,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 153.8862762451172,
+      "mean_linf": 0.9757291078567505,
+      "seconds": 27.56,
+      "error": null,
+      "examples_file": "examples_19_boundary.npz"
+    },
+    {
+      "attack": "HSJA",
+      "art_class": "HopSkipJump",
+      "category": "black-box",
+      "params": {
+        "max_iter": 2,
+        "max_eval": 20,
+        "init_eval": 10,
+        "init_size": 10,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 4,
+      "clean_accuracy": 0.75,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 47.48942565917969,
+      "mean_linf": 0.5067858695983887,
+      "seconds": 96.04,
+      "error": null,
+      "examples_file": "examples_20_hsja.npz"
+    },
+    {
+      "attack": "SIGNOPT",
+      "params": {
+        "max_iter": 2,
+        "query_limit": 50,
+        "num_trial": 5,
+        "k": 10,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "error": "TimeoutError: took longer than 240 s (raise run.attack_timeout_seconds to allow more)"
+    },
+    {
+      "attack": "SQUARE",
+      "art_class": "SquareAttack",
+      "category": "black-box",
+      "params": {
+        "max_iter": 5,
+        "eps": 0.1,
+        "nb_restarts": 1,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.5625,
+      "attack_success_rate": 0.4,
+      "mean_l2": 30.551910400390625,
+      "mean_linf": 0.08750002086162567,
+      "seconds": 76.1,
+      "error": null,
+      "examples_file": "examples_22_square.npz"
+    },
+    {
+      "attack": "ZOO",
+      "art_class": "ZooAttack",
+      "category": "black-box",
+      "params": {
+        "max_iter": 2,
+        "binary_search_steps": 1,
+        "nb_parallel": 1,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 4,
+      "clean_accuracy": 0.75,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 31.380172729492188,
+      "mean_linf": 0.699999988079071,
+      "seconds": 26.96,
+      "error": null,
+      "examples_file": "examples_23_zoo.npz"
+    },
+    {
+      "attack": "SIMBA",
+      "art_class": "SimBA",
+      "category": "black-box",
+      "params": {
+        "max_iter": 8,
+        "epsilon": 0.1,
+        "freq_dim": 4,
+        "batch_size": 1,
+        "verbose": false
+      },
+      "n_samples": 4,
+      "clean_accuracy": 0.75,
+      "adversarial_accuracy": 0.75,
+      "attack_success_rate": 0.0,
+      "mean_l2": 0.2075595259666443,
+      "mean_linf": 0.0019576391205191612,
+      "seconds": 18.29,
+      "error": null
+    },
+    {
+      "attack": "PIXEL",
+      "params": {
+        "max_iter": 1,
+        "es": 1,
+        "verbose": false
+      },
+      "error": "TimeoutError: took longer than 240 s (raise run.attack_timeout_seconds to allow more)"
+    },
+    {
+      "attack": "THRESHOLD",
+      "params": {
+        "max_iter": 1,
+        "es": 0,
+        "verbose": false
+      },
+      "error": "RuntimeError: ThresholdAttack needs an extra package. Install it with: pip install cma"
+    },
+    {
+      "attack": "SPATIAL",
+      "art_class": "SpatialTransformation",
+      "category": "black-box",
+      "params": {
+        "max_translation": 0.05,
+        "num_translations": 1,
+        "max_rotation": 5.0,
+        "num_rotations": 2,
+        "verbose": false
+      },
+      "n_samples": 16,
+      "clean_accuracy": 0.9375,
+      "adversarial_accuracy": 0.9375,
+      "attack_success_rate": 0.0,
+      "mean_l2": 71.70921325683594,
+      "mean_linf": 0.9343031644821167,
+      "seconds": 41.21,
+      "error": null
+    },
+    {
+      "attack": "AUTOATTACK",
+      "art_class": "AutoAttack",
+      "category": "mixed",
+      "params": {
+        "eps": 0.1,
+        "eps_step": 0.025,
+        "batch_size": 1,
+        "parallel_pool_size": 0
+      },
+      "n_samples": 1,
+      "clean_accuracy": 1.0,
+      "adversarial_accuracy": 0.0,
+      "attack_success_rate": 1.0,
+      "mean_l2": 23.885272979736328,
+      "mean_linf": 0.10000002384185791,
+      "seconds": 98.44,
+      "error": null,
+      "examples_file": "examples_28_autoattack.npz"
+    }
+  ],
+  "limits": [
+    "Results apply only to the attacks, parameters and samples listed above.",
+    "A low attack success rate does not prove robustness: stronger attacks, different parameters or black-box methods may still succeed.",
+    "These are white-box attacks: they use the model's gradients, which an outside attacker may not have.",
+    "Attack success rate counts only samples the model classified correctly before the attack."
+  ]
+}
